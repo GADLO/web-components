@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.section {
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+}
+
+.media {
+  display: flex;
+  padding: 2rem;
+  /* border: 2px solid #ccc; */
+  border-radius: 1rem;
+  width: 50rem;
+  margin: 1rem;
+}
+
+.blue-border {
+  border: 2px solid #00a6fb;
+  border-radius: 1rem;
+}
+

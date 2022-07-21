@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components</title>
-</head>
-<body>
-    
-    <script src="./index.js"></script>
-</body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title has-text-centered dividing-header">UpVote!</h1>
+      <div class="section">
+        <article
+          v-for="submission in sortedSubmissions"
+          :key="submission.id"
+          class="media"
+          v-bind:class="{ 'blue-border': submission.votes >= 20 }">
+          <figure class="media-left">
+            <img class="image is-64x64" v-bind:src="submission.avatar" />
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>
+                  <a href="#" class="has-text-info">{{submission.title}}</a>
+                  <span class="tag is-small">#{{ submission.id }}</span>
+                </strong>
+                <br />
+                {{submission.description}}
+                <br />
+                <small class="is-size-7">
+                  Submitted by:
+                  <img
+                    class="image is-24x24"
+                    src="submission.submissionImage"
+                  />
+                </small>
+              </p>
+            </div>
+          </div>
+          <div class="media-right">
+            <span class="icon is-small" @click="upvote(submission.id)">
+              <i class="fa fa-chevron-up"></i>
+              <strong class="has-text-info">{{submission.votes}}</strong>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./seed.js"></script>
+    <script src="./main.js"></script>
+  </body>
 </html>
